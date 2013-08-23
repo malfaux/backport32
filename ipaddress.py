@@ -18,6 +18,8 @@ __version__ = '1.1'
 import sys
 if sys.version_info[0] > 2:
     long = int
+    #TODO: fixbelow nastyhack
+    ord = lambda x: x
 
 import functools
 
@@ -1142,6 +1144,7 @@ class _BaseV4:
             The IP address as a string in dotted decimal notation.
 
         """
+        #BUG
         return '.'.join(map(lambda x:str(ord(x)), to_bytes(ip_int, 4, 'big')))
 
     def _is_valid_netmask(self, netmask):
